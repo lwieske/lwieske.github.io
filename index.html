@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Coming Soon</title>
+	<link name="author" href="Lothar Wieske" />
+  <link rel="shortcut icon" href="./favicon.ico">
+	<style>
+	h1     {text-align:center; font-family: sans-serif;}
+	img    {display: block; margin-left: auto; margin-right: auto;}
+	canvas {display: block; margin-left: auto; margin-right: auto;}
+	</style>
+</head>
+<body>
+	<a href="https://github.com/lwieske/">
+		<img src="https://raw.githubusercontent.com/lwieske/logo/master/logo256px.png">
+	</a>
+	<h1>... Release Date: 30 April 2015 ...</h1>
+	<canvas id="countdown" width="256" height="256"></canvas>
+	<script>
+	"use strict";
+
+	(function(){
+
+		var then = new Date("April 30, 2015 12:00:00").getTime(); // this is the end
+
+		var colors = new Array();
+
+		colors[1] = "#e90b3a"; // color of seconds ring (red)
+		colors[2] = "#f0e000"; // color of minutes ring (yellow)
+		colors[3] = "#00c0f0"; // color of hours ring   (blue)
+		colors[4] = "#00a160"; // color of days ring    (green)
+
+		var s = 256,																							// countdown size
+				r = s/2,																							// ring radius
+				t = 20,																								// ring width
+				g = 5,																								// ring gap
+				τ = 2 * Math.PI;
+
+		var ctx = document.getElementById('countdown').getContext('2d'); // canvas
+		ctx.translate(r,r);																				// ring origin
+		ctx.rotate(-Math.PI/2);																		// 12-o-clock
+		ctx.lineWidth = t; ctx.lineCap = "round";									// rounded endings
+
+		function countdown() {
+					var now  = Date.now();
+					var secondsLeft = Math.round((then-now)/1000);
+
+					if (secondsLeft >= 0) {
+								var secondsCounter = secondsLeft                        % 60;
+								var minutesCounter = Math.floor(secondsLeft/60)         % 60;
+								var hoursCounter   = Math.floor(secondsLeft/(60*60))    % 24;
+								var daysCounter    = Math.floor(secondsLeft/(24*60*60))     ;
+
+								// Store the current transformation matrix
+								ctx.save();
+								ctx.setTransform(1, 0, 0, 1, 0, 0);
+								ctx.clearRect(0, 0, s, s);
+								ctx.restore();
+
+								ctx.beginPath(); ctx.strokeStyle = colors[1];
+									ctx.arc(0,0,r-t-t-t-t-g-g-g,0, secondsCounter/60*τ,false);
+								ctx.stroke(); ctx.beginPath(); ctx.strokeStyle = colors[2];
+									ctx.arc(0,0,r-t-t-t-g-g,0, minutesCounter/60*τ,false);
+								ctx.stroke(); ctx.beginPath(); ctx.strokeStyle = colors[3];
+									ctx.arc(0,0,r-t-t-g,0, hoursCounter/24*τ,false);
+								ctx.stroke(); ctx.beginPath();  ctx.strokeStyle = colors[4];
+									ctx.arc(0,0,r-t,0, daysCounter/50*τ,false);
+								ctx.stroke();
+				  			requestAnimationFrame(countdown);
+					}
+	}
+	requestAnimationFrame(countdown);
+	})()
+	</script>
+</body>
+</html>
