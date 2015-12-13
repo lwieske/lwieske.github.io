@@ -1,78 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8">
-	<title>Coming Soon</title>
-	<link name="author" href="Lothar Wieske" />
-  <link rel="shortcut icon" href="./favicon.ico">
-	<style>
-	h1     {text-align:center; font-family: sans-serif;}
-	img    {display: block; margin-left: auto; margin-right: auto;}
-	canvas {display: block; margin-left: auto; margin-right: auto;}
-	</style>
+
+  <meta charset="utf-8">
+  <title>Lothar Wieske - GitHub User Page</title>
+  <meta name="description" content="Lothar Wieske - GitHub User Page">
+  <meta name="author" content="Lothar Wieske">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" href="img/favicon.png">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <style type="text/css">
+  @import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+
+  .home,.who,.what,.where {
+    font-family: 'Open Sans';
+    text-align: center;
+    padding-top:    2em;
+    padding-bottom: 2em;
+  }
+
+  .home {
+    background: linen;
+    color: black;
+  }
+
+  .home h3 {
+    padding-top: 3em;
+  }
+
+  .who {
+    background: white;
+    color: black;
+  }
+
+  .what {
+    background: deepskyblue;
+    color: white;
+  }
+
+  .row {
+     margin-top: 3em;
+  }
+
+  .where {
+    background: white;
+    color: black;
+    padding-bottom: 0;
+  }
+
+  .where h3 {
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+
+  .where h3 a {
+    color: black;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  h2 {
+    font-size: 3em;
+  }
+
+  h3 {
+    font-size: 2em;
+  }
+
+  h4 {
+    font-size: 1em;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
+
+  </style>
+
 </head>
 <body>
-	<a href="https://github.com/lwieske/">
-		<img src="https://raw.githubusercontent.com/lwieske/logo/master/logo256px.png">
-	</a>
-	<h1>... Release Date: 30 April 2015 ...</h1>
-	<canvas id="countdown" width="256" height="256"></canvas>
-	<script>
-	"use strict";
 
-	(function(){
+  <div class="home">
 
-		var then = new Date("April 30, 2015 12:00:00").getTime(); // this is the end
+    <h2>@lwieske</h2>
+    <svg width="256" height="256" viewBox="-47 -78 256 256" xmlns="http://www.w3.org/2000/svg">
+      <rect x="31" y="75" width="108" height="25" style="fill:deepskyblue; stroke:none"/>
+      <circle cx="137" cy="75" r="25"             style="fill:deepskyblue; stroke:none"/>
+      <circle cx="100" cy="42" r="42"             style="fill:deepskyblue; stroke:none"/>
+      <circle cx="31" cy="69" r="31"              style="fill:deepskyblue; stroke:none"/>
+      <circle cx="50" cy="31" r="31"              style="fill:gold; stroke:none"/>
+      <g transform="translate(52,65) rotate(-45)">
+        <rect x="0" y="0" width="46" height="46" style="fill:deepskyblue; stroke:none"/>
+        <line x1="13" y1="10" x2="33" y2="10" stroke="black" stroke-width="8" stroke-linecap="round"/>
+        <line x1="13" y1="25" x2="33" y2="25" stroke="black" stroke-width="8" stroke-linecap="round"/>
+      </g>
+    </svg>
+    <h3>Cloud Architect // Digital Artist</h3>
 
-		var colors = new Array();
+  </div>
 
-		colors[1] = "#e90b3a"; // color of seconds ring (red)
-		colors[2] = "#f0e000"; // color of minutes ring (yellow)
-		colors[3] = "#00c0f0"; // color of hours ring   (blue)
-		colors[4] = "#00a160"; // color of days ring    (green)
+  <div class="who">
 
-		var s = 256,																							// countdown size
-				r = s/2,																							// ring radius
-				t = 20,																								// ring width
-				g = 5,																								// ring gap
-				τ = 2 * Math.PI;
+      <h2>Who I Am.</h2>
+      <h2><img src="img/lwieske.jpg"></h2>
+      <h3>Stay Hungry. Stay Foolish.</h3>
 
-		var ctx = document.getElementById('countdown').getContext('2d'); // canvas
-		ctx.translate(r,r);																				// ring origin
-		ctx.rotate(-Math.PI/2);																		// 12-o-clock
-		ctx.lineWidth = t; ctx.lineCap = "round";									// rounded endings
+  </div>
 
-		function countdown() {
-					var now  = Date.now();
-					var secondsLeft = Math.round((then-now)/1000);
+  <div class="what">
 
-					if (secondsLeft >= 0) {
-								var secondsCounter = secondsLeft                        % 60;
-								var minutesCounter = Math.floor(secondsLeft/60)         % 60;
-								var hoursCounter   = Math.floor(secondsLeft/(60*60))    % 24;
-								var daysCounter    = Math.floor(secondsLeft/(24*60*60))     ;
+      <h2>What I Do.</h2>
 
-								// Store the current transformation matrix
-								ctx.save();
-								ctx.setTransform(1, 0, 0, 1, 0, 0);
-								ctx.clearRect(0, 0, s, s);
-								ctx.restore();
+      <div class="row">
+        <div class="one-third column">
+          <h2><i class="fa fa-lightbulb-o fa-2x"></i></h2>
+          <h4>Ideation</h4>
+        </div>
+        <div class="one-third column">
+          <h2><i class="fa fa-globe fa-2x"></i></h2>
+          <h4>Digitalization</h4>
+        </div>
+        <div class="one-third column">
+          <h2><i class="fa fa-cloud fa-2x"></i></h2>
+          <h4>Innovation</h4>
+        </div>
+      </div>
 
-								ctx.beginPath(); ctx.strokeStyle = colors[1];
-									ctx.arc(0,0,r-t-t-t-t-g-g-g,0, secondsCounter/60*τ,false);
-								ctx.stroke(); ctx.beginPath(); ctx.strokeStyle = colors[2];
-									ctx.arc(0,0,r-t-t-t-g-g,0, minutesCounter/60*τ,false);
-								ctx.stroke(); ctx.beginPath(); ctx.strokeStyle = colors[3];
-									ctx.arc(0,0,r-t-t-g,0, hoursCounter/24*τ,false);
-								ctx.stroke(); ctx.beginPath();  ctx.strokeStyle = colors[4];
-									ctx.arc(0,0,r-t,0, daysCounter/50*τ,false);
-								ctx.stroke();
-				  			requestAnimationFrame(countdown);
-					}
-	}
-	requestAnimationFrame(countdown);
-	})()
-	</script>
+      <div class="row">
+        <div class="one-third column">
+          <h2><i class="fa fa-tablet fa-2x"></i></h2>
+          <h4>Mobile</h4>
+        </div>
+        <div class="one-third column">
+          <h2><i class="fa fa-user fa-2x"></i></h2>
+          <h4>Social</h4>
+        </div>
+        <div class="one-third column">
+          <h2><i class="fa fa-pie-chart fa-2x"></i></h2>
+          <h4>Analytics</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="one-third column">
+          <h2><i class="fa fa-pencil fa-2x"></i></h2>
+          <h4>Solutions</h4>
+        </div>
+        <div class="one-third column">
+          <h2><i class="fa fa-usd fa-2x"></i></h2>
+          <h4>Economics</h4>
+        </div>
+        <div class="one-third column">
+          <h2><i class="fa fa-wrench fa-2x"></i></h2>
+          <h4>Toolchains</h4>
+        </div>
+      </div>
+  </div>
+
+  <div class="where">
+
+      <h2>Where I Am.</h2>
+      <h3>
+        <a href="https://twitter.com/lwieske"            class="fa fa-twitter"></a>
+        <a href="https://github.com/lwieske"             class="fa fa-github"></a>
+        <a href="https://behance.net/lwieske"            class="fa fa-behance"></a>
+        <a href="https://vimeo.com/lwieske"              class="fa fa-vimeo-square"></a>
+        <a href="https://slideshare.net/lwieske"         class="fa fa-slideshare"></a>
+        <a href="https://pinterest.com/lwieske"          class="fa fa-pinterest"></a>
+        <a href="https://xing.com/profile/Lothar_Wieske" class="fa fa-xing"></a>
+        <a href="https://hub.docker.com/u/lwieske/"      class="fa fa-linkedin"></a>
+      </h3>
+      <h4>&copy; 2015 Lothar Wieske -
+        Powered by
+        <a href="https://pages.github.com">GitHub Pages</a>
+        and
+        <a href="https://github.com/dhg/Skeleton">Skeleton</a>
+      </h4>
+  </div>
+
 </body>
 </html>
